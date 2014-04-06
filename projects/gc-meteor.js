@@ -1,3 +1,6 @@
+var WIFI_ESSID = "wastelands";
+var WIFI_PASSPHRASE = '6202357abc';
+
 var router = require('gc-router').router;
 var sockjs = require('gc-sockjs').sockjs;
 
