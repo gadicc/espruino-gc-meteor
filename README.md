@@ -1,6 +1,8 @@
-== espruino-gc-meteor ==
+## espruino-gc-meteor
 
-This is the code used in the demo.
+*[Espruino](http://www.espruino.com/) + [Meteor](https://www.meteor.com/) = <3*
+
+This is the code used in the [demo](https://www.youtube.com/watch?v=Pjbq2yqyPYM).
 
 Please consider it more of a proof-of-concept than even a preview release.
 Notably, there is no API yet.  You are welcome to play around with the given
@@ -15,14 +17,17 @@ more in this as time allows.
 
 All the code is in the `gc-meteor-full.js` file, it was just easier to work like
 this in the new IDE.  Regarding the `gc-` prefix, this is to emphasize that these
-aren't official packages for sockjs and meteor, but partial implementations by me.
+aren't official packages for SockJS and Meteor, but partial implementations by me.
 I guess router could be just `router`, after I've spent more time with it.
 
-API's for Router and SockJS below, but you don't really need to use them directly
-beyond including them.  The Meteor example from the video follows below, and the
+API's for Router and SockJS are below, but you don't really need to use them directly
+beyond including them.  The Meteor example from the video follows below first, and the
 actual website code is in the `website` directory.
 
-== Meteor Example ==
+Discussion on Espruino board: http://forum.espruino.com/conversations/1020/
+Discussion on Meteor group: https://groups.google.com/forum/#!topic/meteor-talk/SYCjJk5cpPo 
+
+### Meteor Example
 
 Obviously in the future there'll be a cleaner API, possibly OO (see note above),
 and examples for how to make your own collections and methods for servos,
@@ -66,7 +71,7 @@ wlan.connect(WIFI_ESSID, WIFI_PASSPHRASE, function (s) {
 });
 ```
 
-== Router ==
+### Router
 
 Use like this:
 
@@ -98,7 +103,7 @@ path.  Nothing fancier than that yet (there is no RegExp implementation
 in Espruino).  Potentially we could have an extra argument to match
 against parsed query parameters.
 
-== SockJS ==
+### SockJS
 
 Will probably be completely abandoned once we get native
 websocket support [issue #258](https://github.com/espruino/Espruino/issues/258).
