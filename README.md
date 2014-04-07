@@ -2,7 +2,9 @@
 
 *[Espruino](http://www.espruino.com/) + [Meteor](https://www.meteor.com/) = <3*
 
-This is the code used in the [demo](https://www.youtube.com/watch?v=Pjbq2yqyPYM).
+This is the code used in the [demo](https://www.youtube.com/watch?v=Pjbq2yqyPYM),
+and discussed on the [espruino board](http://forum.espruino.com/conversations/1020/)
+and [meteor group](https://groups.google.com/forum/#!topic/meteor-talk/SYCjJk5cpPo).
 
 Please consider it more of a proof-of-concept than even a preview release.
 Notably, there is no API yet.  You are welcome to play around with the given
@@ -22,12 +24,54 @@ I guess router could be just `router`, after I've spent more time with it.
 
 API's for Router and SockJS are below, but you don't really need to use them directly
 beyond including them.  The Meteor example from the video follows below first, and the
-actual website code is in the `website` directory.
+actual website code is in the `website` directory.  But before all that:
 
-Discussion on Espruino board: http://forum.espruino.com/conversations/1020/
-Discussion on Meteor group: https://groups.google.com/forum/#!topic/meteor-talk/SYCjJk5cpPo 
+### How to setup the Demo
 
-### Meteor Example
+1. Install Meteor (see [meteor.com](http://www.meteor.com/) for more info).
+
+    ```bash
+    $ curl https://install.meteor.com/ | sh
+    ```
+
+1. Clone the repo:
+
+    ```bash
+    $ git clone https://github.com/gadicc/espruino-gc-meteor.git
+    ```
+
+1. Load `espruino-gc-meteor/gc-meteor-full.js` into the Espruino IDE, edit the lines
+at the top to include your WIFI ESSID and Passphrase:
+
+    ```js
+    var WIFI_ESSID = "XXX";
+    var WIFI_PASSPHRASE = 'XXX';
+    ```
+    
+    and then deploy to the board.  Note, the interesting stuff is at the bottom of
+    this file, under the --- example.js --- heading.  `router`, `sockjs`, `meteor`, etc
+    will ultimately all become their own modules, it was just easier to code like this with
+    the new IDE.
+
+1. `cd espruino-gc-meteor/website`
+
+1. Edit `espruino.js`, and change the IP address near the bottom of the file to
+that of your Espruino (once `gc-meteor-full.js` is fully loaded, it will tell you
+the board's IP):
+
+    ```js
+    espruino = DDP.connect('http://192.168.1.121/');
+    ```
+
+1. Run Meteor in that directory:
+
+    ```js
+    $ meteor
+    ```
+
+    and connect to [http://localhost:3000/](http://localhost:3000/) (or specify a different port with `-p port`).
+
+### Meteor Examples
 
 Obviously in the future there'll be a cleaner API, possibly OO (see note above),
 and examples for how to make your own collections and methods for servos,
